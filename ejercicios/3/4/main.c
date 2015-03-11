@@ -1,9 +1,12 @@
+/* Faltaba reservar memoria de la estructura coche */
 #include "coche.h"
 
 int main(void)
 {
 	struct coche *c1;
 	char info[250];
+
+	c1 =  curso_coche_alloc();
 
 	curso_coche_attr_set_str(c1, CURSO_COCHE_ATTR_MATRICULA, "DF 67838 SE");
 	curso_coche_attr_set_str(c1, CURSO_COCHE_ATTR_MARCA, "mini");
