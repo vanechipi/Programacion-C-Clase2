@@ -1,3 +1,4 @@
+/* Faltaba la linea que libera la memoria, por los alloc hechos anteriormente*/
 #include "concesionario.h"
 
 int main(void)
@@ -32,5 +33,6 @@ int main(void)
 	curso_concesionario_snprintf(info, sizeof(info), con);
 	printf("%s", info);
 
+	curso_concesionario_free(con);
 	return 0;
 }
