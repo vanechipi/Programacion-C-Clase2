@@ -1,3 +1,6 @@
+/* Hay doble liberacion, en el metodo unset y luego con el free. Mi solucion se ha basado en
+liberar el otro coche del array, la estructura del concesionario y el atributo dueño del mismo
+poniendolo en el main... Así puedo liberar todo en la memoria.. */
 #include "concesionario.h"
 
 int main(void)
@@ -34,6 +37,9 @@ int main(void)
 	curso_concesionario_snprintf(info, sizeof(info), con);
 	printf("%s", info);
 
-	curso_concesionario_free(con);
+	//curso_concesionario_free(con);
+	curso_concesionario_attr_unset_coche(con, 1);
+	xfree(con);
+	xfree(curso_concesionario_attr_get_data(con, CURSO_CONCESIONARIO_ATTR_DUENO, 0));
 	return 0;
 }
