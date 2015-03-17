@@ -63,6 +63,7 @@ void gestor_tareas_set_tarea(struct gestor_tarea *gt, const void *data)
 
 	aniade_tarea(gt, (struct tarea *)data, pos);
 	gt->num_tareas++;
+	gt->flags |= (1 << GESTOR_TAREAS_NUM_TAREAS);
 
 	gt->flags |= (1 << GESTOR_TAREAS_TAREAS);
 

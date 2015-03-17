@@ -6,6 +6,7 @@ int main(void)
 	struct tarea *t1, *t2, *t3;
 	struct gestor_tarea *gt;
 	char info[10000];
+	uint32_t numeroDeTareas = 0;
 
 	t1 =  tarea_alloc();
 
@@ -56,10 +57,16 @@ int main(void)
 	gestor_tareas_set_tarea(gt, t2);
 	gestor_tareas_set_tarea(gt, t3);
 
+	numeroDeTareas = gestor_tareas_get_u32(gt, GESTOR_TAREAS_NUM_TAREAS);
+	printf("Hay %d tareas en el gestor de tareas\n", numeroDeTareas);
 	gestor_tareas_unset_tarea(gt, 0);
 
+	numeroDeTareas = gestor_tareas_get_u32(gt, GESTOR_TAREAS_NUM_TAREAS);
+	assert(numeroDeTareas == 2);
+
 	gestor_tareas_snprintf(info, sizeof(info), gt);
-	printf("%s\n", info);
+	printf("%s", info);
+	printf("Hay %d tareas en el gestor de tareas\n", numeroDeTareas);
 
 	gestor_tareas_free(gt);
 	return 0;
